@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhee Ventures | Curated Selection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --base-dark: #1e2019; /* Near-dark olive/grey */
+        --surface-low: #2a2d23; /* Muted surface */
+        --surface-high: #3d4127; /* Elevated surface */
+        --accent: #bac095; /* Your requested Moss */
+        --text-primary: #f4f4f1;
+        --text-secondary: #a1a19a;
+        --glass: rgba(255, 255, 255, 0.03);
+        --border: rgba(186, 192, 149, 0.2);
+        --font-head: "Syne", sans-serif;
+        --font-body: "Outfit", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        background-color: var(--base-dark);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* --- 1. HYBRID SIDE-DOCK NAVIGATION --- */
+      nav.side-dock {
+        position: fixed;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 80px;
+        background: var(--surface-low);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 60vh;
+        z-index: 1000;
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-logo img {
+        width: 40px;
+        filter: brightness(0) invert(1);
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .call-action {
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--base-dark);
+        text-decoration: none;
+      }
+
+      /* --- 2. OFFSET HERO SECTION --- */
+      .hero-modular {
+        padding: 100px 10% 100px 150px;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 60px;
+        width: 100%;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-tag {
+        font-family: var(--font-head);
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-family: var(--font-head);
+        font-size: clamp(48px, 8vw, 110px);
+        line-height: 0.9;
+        margin-bottom: 40px;
+        color: var(--text-primary);
+      }
+
+      .hero-content p {
+        font-size: 22px;
+        color: var(--text-secondary);
+        max-width: 500px;
+        font-weight: 300;
+      }
+
+      .hero-image-stack {
+        position: relative;
+      }
+
+      .hero-image-stack img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 4px;
+        filter: contrast(1.1) grayscale(0.2);
+        border-left: 8px solid var(--accent);
+      }
+
+      .hero-stats-card {
+        position: absolute;
+        bottom: -30px;
+        left: -50px;
+        background: var(--surface-high);
+        padding: 30px;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+        box-shadow: 40px 40px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      /* --- 3. THE "PORTAL" ASYMMETRIC CARDS --- */
+      .section-label {
+        padding-left: 150px;
+        font-family: var(--font-head);
+        font-size: 32px;
+        margin-bottom: 80px;
+      }
+
+      .portal-container {
+        padding: 0 10% 100px 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 150px;
+      }
+
+      .portal-card {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .portal-visual {
+        grid-column: 1 / 9;
+        height: 550px;
+        overflow: hidden;
+        position: relative;
+        background: var(--surface-low);
+        border: 1px solid var(--border);
+      }
+
+      .portal-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+
+      .portal-info {
+        grid-column: 7 / 13;
+        background: var(--surface-high);
+        padding: 60px;
+        position: relative;
+        z-index: 5;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        border-top: 4px solid var(--accent);
+      }
+
+      .portal-card:nth-child(even) .portal-visual {
+        grid-column: 5 / 13;
+      }
+      .portal-card:nth-child(even) .portal-info {
+        grid-column: 1 / 7;
+      }
+
+      .portal-card:hover .portal-visual img {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      .portal-info h3 {
+        font-family: var(--font-head);
+        font-size: 42px;
+        margin-bottom: 10px;
+      }
+
+      .loc-tag {
+        color: var(--accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      .config-list {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .config-item {
+        padding: 8px 16px;
+        border: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      /* --- 4. SITE VISIT OVERLAP --- */
+      .visit-modular {
+        margin: 100px 10% 100px 150px;
+        background: var(--accent);
+        color: var(--base-dark);
+        padding: 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        position: relative;
+      }
+
+      .visit-modular h2 {
+        font-family: var(--font-head);
+        font-size: 56px;
+        line-height: 1;
+      }
+
+      .visit-btn {
+        display: inline-block;
+        background: var(--base-dark);
+        color: white;
+        padding: 24px 48px;
+        text-decoration: none;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 30px;
+        transition: 0.3s;
+      }
+
+      /* --- 5. GRID-BASED FOOTER --- */
+      .footer-modular {
+        background: var(--surface-low);
+        padding: 100px 10% 60px 150px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 80px;
+      }
+
+      .footer-brand h4 {
+        font-family: var(--font-head);
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .footer-brand p {
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+
+      .footer-links h6 {
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        font-size: 13px;
+      }
+
+      .footer-links a {
+        display: block;
+        text-decoration: none;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .legal-row {
+        grid-column: span 3;
+        padding-top: 60px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--text-secondary);
+      }
+
+      @media (max-width: 1024px) {
+        nav.side-dock {
+          height: 70px;
+          width: 90%;
+          left: 5%;
+          top: 20px;
+          transform: none;
+          flex-direction: row;
+          padding: 0 30px;
+        }
+        .nav-links {
+          writing-mode: horizontal-tb;
+          transform: none;
+          flex-direction: row;
+          gap: 20px;
+        }
+        .hero-modular,
+        .portal-container,
+        .section-label,
+        .visit-modular,
+        .footer-modular {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+        .hero-grid,
+        .portal-card,
+        .visit-modular {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .portal-visual,
+        .portal-info {
+          grid-column: span 12 !important;
+        }
+        .portal-info {
+          margin-top: -60px;
+          padding: 40px;
+        }
+        .footer-modular {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="side-dock">
+      <div class="nav-logo">
+        <img
+          src="https://propfocus-directory.s3.ap-south-1.amazonaws.com/Builder_Logos/abhee.png"
+          alt="Abhee"
+        />
+      </div>
+
+      <a href="tel:9650355568" class="call-action">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+          />
+        </svg>
+      </a>
+    </nav>
+
+    <header class="hero-modular">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="hero-tag">Personal Portfolio</span>
+          <h1>Hi <br />Bhatnagar</h1>
+          <p>
+            Welcome to your handpicked shortlist. These residences represent the
+            absolute pinnacle of current residential design in East Bangalore.
+          </p>
+        </div>
+        <div class="hero-image-stack">
+          <img
+            src="https://propfocus-directory.s3.ap-south-1.amazonaws.com/All+projects/projects/projects-abhee-aaria/aria-1.png"
+            alt="Interior"
+          />
+          <div class="hero-stats-card">
+            <div
+              style="font-size: 12px; opacity: 0.6; text-transform: uppercase"
+            >
+              Curated For You
+            </div>
+            <div
+              style="font-size: 24px; font-weight: 800; color: var(--accent)"
+            >
+              02 Projects
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <h2 class="section-label">Selected Portfolio</h2>
+
+    <main class="portal-container">
+      <a href="#" class="portal-card">
+        <div class="portal-visual">
+          <img
+            src="https://propfocus-directory.s3.ap-south-1.amazonaws.com/All+projects/projects/projects-abhee-aaria/aria-1.png"
+            alt="Abhee Aria"
+          />
+        </div>
+        <div class="portal-info">
+          <span class="loc-tag">Gunjur, East Bangalore</span>
+          <h3>Abhee Aria</h3>
+          <div class="config-list">
+            <div class="config-item">2 BHK</div>
+            <div class="config-item">3 BHK</div>
+            <div class="config-item">4.5 BHK</div>
+          </div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--accent)">
+            ₹1.36 Cr* onwards
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="portal-card">
+        <div class="portal-visual">
+          <img
+            src="https://propfocus-directory.s3.ap-south-1.amazonaws.com/All+projects/projects/projects-abhee-aaria/aria-1.png"
+            alt="Abhee King's Court"
+          />
+        </div>
+        <div class="portal-info">
+          <span class="loc-tag">Sarjapura Road</span>
+          <h3>Abhee King's Court</h3>
+          <div class="config-list">
+            <div class="config-item">2 BHK</div>
+            <div class="config-item">2.5 BHK</div>
+            <div class="config-item">3 BHK</div>
+          </div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--accent)">
+            ₹1.13 Cr onwards
+          </div>
+        </div>
+      </a>
+    </main>
+
+    <section class="visit-modular">
+      <div>
+        <h2>Private <br />Walkthrough</h2>
+        <p style="margin-top: 20px">
+          Book an exclusive site visit with our senior consultants to explore
+          model homes and detailed layouts.
+        </p>
+      </div>
+      <div
+        style="display: flex; align-items: flex-end; justify-content: flex-end"
+      >
+        <a href="tel:9650355568" class="visit-btn">Schedule Visit</a>
+      </div>
+    </section>
+
+    <footer class="footer-modular">
+      <div class="footer-brand">
+        <h4>ABHEE.</h4>
+        <p>
+          A pioneer in crafting architectural landmarks since 2012, Abhee
+          Ventures creates homes that are a legacy for generations.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h6>Direct</h6>
+        <a href="tel:9650355568">+91 96503 55568</a>
+        <a href="#">Contact Support</a>
+        <a href="#">Book Appointment</a>
+      </div>
+      <div class="footer-links">
+        <h6>Corporate</h6>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">RERA Numbers</a>
+      </div>
+      <div class="legal-row">
+        <div>© 2024 Abhee Ventures Portfolio</div>
+        <div>Designed for Exclusive Preview</div>
+      </div>
+    </footer>
+  </body>
+</html>
